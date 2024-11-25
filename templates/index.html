@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Playbook</title>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <style>
+        #status {
+            white-space: pre-wrap; /* Para mantener el formato de salida */
+            margin-top: 20px;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            max-height: 400px;
+            overflow-y: scroll;
+        }
+        pre {
+            font-family: 'Courier New', Courier, monospace;
+            color: #0f0;
+            text-align: center;
+            font-size: 18px;
+            background-color: #333;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <pre>
+██████╗ ██╗   ██╗██╗     ██████╗ ██╗████████╗ █████╗ ███╗   ██╗███████╗
+██╔══██╗██║   ██║██║     ██╔══██╗██║╚══██╔══╝██╔══██╗████╗  ██║██╔════╝
+██████╔╝██║   ██║██║     ██████╔╝██║   ██║   ███████║██╔██╗ ██║███████╗
+██╔═══╝ ██║   ██║██║     ██╔═══╝ ██║   ██║   ██╔══██║██║╚██╗██║╚════██║
+██║     ╚██████╔╝███████╗██║     ██║   ██║   ██║  ██║██║ ╚████║███████║
+╚═╝      ╚═════╝ ╚══════╝╚═╝     ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝
+
+Welcome to iDAS-PulpitAns - By DevOps and for DevOps!
+
+    </pre>
+
+    <h1>Playbook execution area for cracks</h1>
+
+    <label for="playbook-path">Ruta del Playbook:</label>
+    <input type="text" id="playbook-path" placeholder="Ejemplo: /ruta/a/tu/playbook.yml" />
+    <button id="start-playbook">Iniciar Playbook</button>
+    <button id="cancel-playbook">Cancelar Playbook</button>
+
+    <div id="status"></div>
+
+    <script>
+        const socket = io();
+
+        document.getElementById('start-playbook').addEventListener('click', () => {
+            const playbookPath = document.getElementById('playbook-path').value.trim();
+
+            if (playbookPath === '') {
+                alert('Por favor ingrese la ruta del playbook');
+                return;
+            }
+
+            socket.emit('start_playbook', { playbook_path: playbookPath });
+        });
+
+        document.getElementById('cancel-playbook').addEventListener('click', () => {
+            socket.emit('cancel_playbook');
+        });
+
+        socket.on('status', (data) => {
+            const statusDiv = document.getElementById('status');
+            const message = document.createElement('p');
+            message.textContent = data.message;
+            statusDiv.appendChild(message);
+            statusDiv.scrollTop = statusDiv.scrollHeight; // Para hacer scroll hasta el final
+        });
+    </script>
+</body>
+</html>

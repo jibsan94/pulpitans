@@ -1,0 +1,11 @@
+[2024-11-25 10:32:27 +0000] [1670918] [INFO] Starting gunicorn 23.0.0
+[2024-11-25 10:32:27 +0000] [1670918] [INFO] Listening at: http://0.0.0.0:8080 (1670918)
+[2024-11-25 10:32:27 +0000] [1670918] [INFO] Using worker: geventwebsocket.gunicorn.workers.GeventWebSocketWorker
+[2024-11-25 10:32:27 +0000] [1670929] [INFO] Booting worker with pid: 1670929
+[2024-11-25 10:32:27 +0000] [1670930] [INFO] Booting worker with pid: 1670930
+[2024-11-25 10:32:28 +0000] [1670931] [INFO] Booting worker with pid: 1670931
+[2024-11-25 10:32:28 +0000] [1670932] [INFO] Booting worker with pid: 1670932
+[2024-11-25 10:33:06 +0000] [1670918] [INFO] Handling signal: term
+[2024-11-25 10:33:06 +0000] [1670931] [INFO] Worker exiting (pid: 1670931)
+[2024-11-25 10:33:06 +0000] [1670929] [INFO] Worker exiting (pid: 1670929)
+[2024-11-25 10:33:07 +0000] [1670930] [INFO] Worker exiting (pid: 1670930)

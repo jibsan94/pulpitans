@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+#logs {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    font-family: monospace;
+}
+
+.log-ok {
+    color: green;
+}
+
+.log-changed {
+    color: orange;
+}
+
+.log-failed {
+    color: red;
+}
+
+.log-skipped {
+    color: gray;
+}
+
+.log-default {
+    color: black;
+}
